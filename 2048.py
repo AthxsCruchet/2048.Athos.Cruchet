@@ -25,31 +25,40 @@ windows.geometry("%dx%d+%d+%d" % (width, height, x, y))
 windows.config(background="#FFE599")
 
 #affichage
-espace_frame = Frame(windows, background="#FFE599", height=20, width=160)
+espace_frame = Frame(windows,
+                     background="#FFE599", height=20, width=160)
 espace_frame.pack()
 
-grosse_frame = Frame(windows, background="#FFE599", height=20, width=300)
+grosse_frame = Frame(windows,
+                     background="#FFE599", height=20, width=300)
 grosse_frame.pack()
 
-logo_frame = Frame(grosse_frame, background="#FFE599", height=20, width=160)
+logo_frame = Frame(grosse_frame,
+                   background="#FFE599", height=20, width=160)
 logo_frame.pack(side=LEFT)
 
-espace2_frame = Frame(grosse_frame, background="#FFE599", height=20, width=120)
+espace2_frame = Frame(grosse_frame,
+                      background="#FFE599", height=20, width=120)
 espace2_frame.pack(side=LEFT)
 
-top_frame = Frame(grosse_frame, background="#FFE599", height=20, width=120)
+top_frame = Frame(grosse_frame,
+                  background="#FFE599", height=20, width=120)
 top_frame.pack(side=LEFT)
 
-logo_label = Label(logo_frame, text="2048", background="#FFE599", font=("arial", 15))
+logo_label = Label(logo_frame,
+                   text="2048", background="#FFE599", font=("arial", 15))
 logo_label.pack()
 
-score_label = Label(top_frame, text="score", background="#FFE599", font=("arial", 15))
+score_label = Label(top_frame,
+                    text="score", background="#FFE599", font=("arial", 15))
 score_label.pack()
 
-top_label = Label(top_frame, text="top", background="#FFE599", font=("arial", 15))
+top_label = Label(top_frame,
+                  text="top", background="#FFE599", font=("arial", 15))
 top_label.pack()
 
-jeux_frame = Frame(windows, background="#FFE599", height=250, width=250)
+jeux_frame = Frame(windows,
+                   background="#FFE599", height=250, width=250)
 jeux_frame.pack(pady=60)
 
 # tableau des couleurs (idee de Tiago)
@@ -69,9 +78,17 @@ hex_colors = {
              4096: "#4C1130",
              8192: "#A64D79",
 }
-# définitions des mouvements et du tasse 4
-numbers = [[0, 2, 2, 2], [4, 4, 4, 4], [8, 8, 8, 8], [4096, 8192, 0, 0]]
-labels = [[None, None, None, None], [None, None, None, None], [None, None, None, None], [None, None, None, None]]
+# tabbleau des valeurs pour la fonction tasse 4
+numbers = [[0, 2, 2, 2],
+           [4, 4, 4, 4],
+           [8, 8, 8, 8],
+           [4096, 8192, 0, 0]]
+
+labels = [[None, None, None, None],
+          [None, None, None, None],
+          [None, None, None, None],
+          [None, None, None, None]]
+
 for line in range(len(numbers)):
     for col in range(len(numbers[line])):
         labels[line][col] = Label(jeux_frame, text="", width=6, height=3, borderwidth=1, relief="solid", font=("Arial", 10))
