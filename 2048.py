@@ -27,19 +27,25 @@ windows.config(background="#FFE599")
 #affichage
 espace_frame = Frame(windows, background="#FFE599", height=20, width=160)
 espace_frame.pack()
+
 grosse_frame = Frame(windows, background="#FFE599", height=20, width=300)
 grosse_frame.pack()
+
 logo_frame = Frame(grosse_frame, background="#FFE599", height=20, width=160)
 logo_frame.pack(side=LEFT)
+
 espace2_frame = Frame(grosse_frame, background="#FFE599", height=20, width=120)
 espace2_frame.pack(side=LEFT)
+
 top_frame = Frame(grosse_frame, background="#FFE599", height=20, width=120)
 top_frame.pack(side=LEFT)
 
 logo_label = Label(logo_frame, text="2048", background="#FFE599", font=("arial", 15))
 logo_label.pack()
+
 score_label = Label(top_frame, text="score", background="#FFE599", font=("arial", 15))
 score_label.pack()
+
 top_label = Label(top_frame, text="top", background="#FFE599", font=("arial", 15))
 top_label.pack()
 
@@ -63,8 +69,7 @@ hex_colors = {
              4096: "#4C1130",
              8192: "#A64D79",
 }
-
-# définitions
+# définitions des mouvements et du tasse 4
 numbers = [[0, 2, 2, 2], [4, 4, 4, 4], [8, 8, 8, 8], [4096, 8192, 0, 0]]
 labels = [[None, None, None, None], [None, None, None, None], [None, None, None, None], [None, None, None, None]]
 for line in range(len(numbers)):
@@ -79,7 +84,7 @@ def display():
                 labels[line][col].config(text="", bg="#FFFFFF")
             else:
                 labels[line][col].config(text=numbers[line][col], bg=hex_colors[numbers[line][col]])
-
+#fonction pour tasser
 def tasse_4(a, b, c, d):
     #oter les 0 s'il y a qq chose à droite, depuis la droit
     nmove = 0
@@ -115,6 +120,7 @@ def tasse_4(a, b, c, d):
     temp = [a, b, c, d, nmove]
     return temp
 
+#mouvement vers la droite
 def move_right (event):
     totmove = 0
     n = 0
@@ -125,6 +131,7 @@ def move_right (event):
         display()
     print(totmove)
 
+#mouvement vers la gauche
 def move_left(event):
     totmove = 0
     n = 0
@@ -135,6 +142,7 @@ def move_left(event):
         display()
         print(totmove)
 
+#mouvement vers le haut
 def move_up(event):
     totmove = 0
     n = 0
@@ -145,6 +153,7 @@ def move_up(event):
         display()
         print(totmove)
 
+#mouvement vers le bas
 def move_down(event):
     totmove = 0
     n = 0
@@ -160,9 +169,8 @@ def new_game():
     global numbers
     numbers = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
     display()
-
-button_nouveau = Button(command=new_game, text="nouveau", background="#FFE599")
-button_nouveau.pack()
+    button_nouveau = Button(command=new_game, text="nouveau", background="#FFE599")
+    button_nouveau.pack()
 
 #assignation des touches "a" "w" "d" "s"
 windows.bind("a", move_left)
